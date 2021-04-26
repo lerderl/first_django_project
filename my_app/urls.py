@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-from .views import BlogListView
+from .views import BlogListView, BlogDetailView
 
 urlpatterns = [
     path("index/", views.index, name="index"),
+    path("post/<int:pk>/", BlogDetailView.as_view(), name="post_detail"),
     path("", BlogListView.as_view(), name="home")
 ]
